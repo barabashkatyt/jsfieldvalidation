@@ -38,54 +38,54 @@ function checkBooleanValue(value){
 }
 const userValidationRule = {
     firstName: [{
-        validationRule: validateType,
-        validationParams: ["string"],
-        validationMessage: "First Name is not a string",
+        rule: validateType,
+        params: ["string"],  
+        message: "First Name is not a string",
     },
     {
-        validationRule: checkNotEmpty,
-        validationParams: ["string"],
-        validationMessage: "First Name is empty",
+        rule: checkNotEmpty,
+        params: ["string"],
+        message: "First Name is empty",
     }],
     lastName: [{
-        validationRule: validateType,
-        validationParams: ["string"],
-        validationMessage: "Last Name is not a string",
+        rule: validateType,
+        params: ["string"],
+        message: "Last Name is not a string",
     },
     {
-        validationRule: checkNotEmpty,
-        validationParams: [],
-        validationMessage: "Last Name is empty",
+        rule: checkNotEmpty,
+        params: [],
+        message: "Last Name is empty",
     }],
     phoneNumber: [{
-        validationRule: validateType,
-        validationParams: ["string"],
-        validationMessage: "Phone number is not a string",
+        rule: validateType,
+        params: ["string"],
+        message: "Phone number is not a string",
     },
     {
-        validationRule: checkNotEmpty,
-        validationParams: [],
-        validationMessage: "Phone number is empty",
+        rule: checkNotEmpty,
+        params: [],
+        message: "Phone number is empty",
     },
     {
-        validationRule: checkLength,
-        validationParams: [9],
-        validationMessage: "Phone number is too long",
+        rule: checkLength,
+        params: [9],
+        message: "Phone number is too long",
     }],
     age: [{
-        validationRule: validateType,
-        validationParams: ["number"],
-        validationMessage: "Age is not a number",
+        rule: validateType,
+        params: ["number"],
+        message: "Age is not a number",
     },
     {
-        validationRule: checkValue,
-        validationParams: [0,120],
-        validationMessage: "Age is not correct",
+        rule: checkValue,
+        params: [0,120],
+        message: "Age is not correct",
     }],
     status: [{
-        validationRule: checkBooleanValue,
-        validationParams: [],
-        validationMessage: "Status is false",
+        rule: checkBooleanValue,
+        params: [],
+        message: "Status is false",
     }]
 };
 
@@ -95,13 +95,13 @@ function validateField(user, key, keyDescription){
     const userKeyValue = user[key];
 
     keyDescription.forEach(descr => {
-    const argsArray = [userKeyValue, ...descr.validationParams];
+    const argsArray = [userKeyValue, ...descr.params];
 
-    if (!descr.validationRule.apply(null, argsArray)) {
+    if (!descr.rule.apply(null, argsArray)) {
         errorArray.push({
         user: user.firstName,
         key,
-        message: descr.validationMessage,
+        message: descr.message,
         });
     }});
     
