@@ -3,11 +3,6 @@ import {listOfUsers} from '../task/user.js'
 
 const result = checkArrayOfUsers(listOfUsers,userValidationRule);
 
-// const validation = validateUser(userTest,userValidationRule);
-
-if (result.length > 0){
-    // dumpErrors(validation,userTest);
-    console.log(result);
-}else{
+if (result.length == 0){
     console.log("Everything is right");
 }

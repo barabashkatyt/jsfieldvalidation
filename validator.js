@@ -107,8 +107,15 @@ export function checkArrayOfUsers(array,rules){
     const errorList = [];
     array.forEach( user => {
         if (validateUser(user,rules).length>0){
-            errorList.push(validateUser(user,rules));
+            errorList.push(validateUser(user, rules));
         };
     });
+    if (errorList.length > 0) { 
+        errorList.map(item => { 
+            for (let index = 0; index < errorList.length; index++) {
+            dumpErrors(item, item[index])
+            }
+        });
+    }
     return errorList;
 };
