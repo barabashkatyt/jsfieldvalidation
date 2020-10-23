@@ -1,7 +1,8 @@
-import {userValidationRule,checkArrayOfUsers} from '../task/validator.js'
-import {listOfUsers} from '../task/user.js'
+import { validateArrayOfobjects } from './validationFunctions/validation.js'
+import { userValidationRule } from '../task/validationRules/userValidationRule.js'
+import {listOfUsers} from './objectsForValidation/users.js'
 
-const result = checkArrayOfUsers(listOfUsers,userValidationRule);
+const result = validateArrayOfobjects(listOfUsers,userValidationRule);
 
 if (result.length == 0){
     console.log("Everything is right");
