@@ -1,5 +1,3 @@
-import { dumpErrorsUser } from '../dumpErrors/dumpErrorsUser.js'
-
 function validateField(object, key, keyDescription) {
     const errorArray = [];
     const objectKeyValue = object[key];
@@ -36,10 +34,5 @@ export function validateArrayOfObjects(array, rules) {
     array.forEach(user => {
         errorList.push(validateObject(user, rules));
     });
-    if (errorList.length > 0) { 
-        errorList.map(array => { 
-            dumpErrorsUser(array,array[0] );
-        })
-    }
     return errorList;
 };
