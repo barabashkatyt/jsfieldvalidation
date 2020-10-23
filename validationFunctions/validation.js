@@ -4,14 +4,14 @@ function validateField(object, key, keyDescription) {
     const errorArray = [];
     const objectKeyValue = object[key];
 
-    const firstKeyOfObject = Object.keys(object)[0];
+    const firstKeyValueOfObject = object[Object.keys(object)[0]];
 
     keyDescription.forEach(descr => {
     const argsArray = [objectKeyValue, ...descr.params];
 
     if (!descr.rule.apply(null, argsArray)) {
         errorArray.push({
-        firstKeyOfObject,
+        firstKeyOfObject: firstKeyValueOfObject,
         key,
         keyValue: objectKeyValue,
         message: descr.message,
@@ -31,7 +31,7 @@ function validateObject(object, rules){
 }
 
 
-export function validateArrayOfobjects(array, rules) {
+export function validateArrayOfObjects(array, rules) {
     const errorList = [];
     array.forEach(user => {
         errorList.push(validateObject(user, rules));
