@@ -70,14 +70,16 @@ function validateField(user, key, keyDescription){
     const errorArray = [];
 
     const userKeyValue = user[key];
+    const userFirstName = user.firstName;
 
     keyDescription.forEach(descr => {
     const argsArray = [userKeyValue, ...descr.params];
 
     if (!descr.rule.apply(null, argsArray)) {
         errorArray.push({
-        user: user.firstName,
+        userFirstName,
         key,
+        userKeyValue,
         message: descr.message,
         });
     }});
@@ -96,8 +98,9 @@ function validateUser(user, rules){
 
 function dumpErrors(errorList, user) {
     errorList.forEach(error => {
+        console.log(`User: ${error.userFirstName}`);
         console.log(`Field: ${error.key}`);
-        console.log(`Provided value: ${user[error.key]}`);
+        console.log(`Provided value: ${error.userKeyValue}`);
         console.log(`Message: ${error.message}`);
     });
 }
@@ -105,17 +108,13 @@ function dumpErrors(errorList, user) {
 
 export function checkArrayOfUsers(array,rules){
     const errorList = [];
-    array.forEach( user => {
-        if (validateUser(user,rules).length>0){
-            errorList.push(validateUser(user, rules));
-        };
+    array.forEach(user => {
+        errorList.push(validateUser(user, rules));
     });
     if (errorList.length > 0) { 
-        errorList.map(item => { 
-            for (let index = 0; index < errorList.length; index++) {
-            dumpErrors(item, item[index])
-            }
-        });
+        errorList.map(array => { 
+            dumpErrors(array,array[0] );
+        })
     }
     return errorList;
 };

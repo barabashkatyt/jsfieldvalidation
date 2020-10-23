@@ -1,22 +1,22 @@
 const userTest = {
-    firstName: "FirstName",
+    firstName: "One",
     lastName: "LastName",
-    phoneNumber: "1234543456789",
+    phoneNumber: "123456789",
     age: 89,
     status: false,
 };
 const userTest1 = {
-    firstName: "FirstName",
+    firstName: "Two",
     lastName: "LastName",
     phoneNumber: "123456789",
     age: 89,
     status: true,
 };
 const userTest2 = {
-    firstName: "FirstName",
+    firstName: "Three",
     lastName: "LastName",
-    phoneNumber: "123456789",
-    age: 70,
+    phoneNumber: "12345456789",
+    age: 700,
     status: true,
 };
 export const listOfUsers = [userTest,userTest1,userTest2];
