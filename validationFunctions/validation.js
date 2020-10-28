@@ -1,10 +1,10 @@
-function validateField(object, key, keyDescription) {
+function validateField(object, key, fieldRules) {
   const errorArray = [];
   const objectKeyValue = object[key];
 
   const firstKeyValueOfObject = object[Object.keys(object)[0]];
 
-  keyDescription.forEach((descr) => {
+  fieldRules.forEach((descr) => {
     const argsArray = [objectKeyValue, ...descr.params];
 
     if (!descr.rule.apply(null, argsArray)) {
