@@ -6,11 +6,13 @@ export const carsValidationRule = {
       rule: check.checkType,
       params: ["string"],
       message: "Car brand is not a string",
-    },
-    {
-      rule: check.checkNotEmpty,
-      params: ["string"],
-      message: "Car brand is empty",
+      children: [
+        {
+          rule: check.checkNotEmpty,
+          params: ["string"],
+          message: "Car brand is empty",
+        },
+      ],
     },
   ],
   year: [
@@ -18,11 +20,13 @@ export const carsValidationRule = {
       rule: check.checkType,
       params: ["number"],
       message: "Year is not a number",
-    },
-    {
-      rule: check.checkValue,
-      params: [1886, 2020],
-      message: "Year is not correct",
+      children: [
+        {
+          rule: check.checkValue,
+          params: [1886, 2020],
+          message: "Year is not correct",
+        },
+      ],
     },
   ],
   status: [

@@ -14,6 +14,8 @@ function validateField(object, key, keyDescription) {
         keyValue: objectKeyValue,
         message: descr.message,
       });
+    } else if (!!descr.rule.apply(null, argsArray) && !!descr.children) {
+      errorArray.push(...validateField(object, key, descr.children));
     }
   });
 

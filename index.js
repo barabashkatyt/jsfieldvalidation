@@ -4,8 +4,8 @@ import {
 } from "./validationFunctions/validation.js";
 import { userValidationRule } from "../task/validationRules/userValidationRule.js";
 import { carsValidationRule } from "../task/validationRules/carValidationRule.js";
-import { listOfUsers } from "./objectsForValidation/users.js";
-import { listOfCars } from "./objectsForValidation/cars.js";
+import { listOfUsers } from "./model/users.js";
+import { listOfCars } from "./model/cars.js";
 import { dumpErrors } from "../task/dumpErrors/dumpErrors.js";
 
 const resultCars = validateArrayOfObjects(listOfCars, carsValidationRule);
