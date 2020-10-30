@@ -6,7 +6,7 @@ const carTest = {
 const carTest1 = {
   carBrand: "Audi",
   year: 2010,
-  status: false,
+  status: true,
 };
 const carTest2 = {
   carBrand: "Tesla",

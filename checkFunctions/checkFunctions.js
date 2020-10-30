@@ -5,11 +5,11 @@ export function checkValue(value, valueMin, valueMax) {
   return valueMin <= value && value <= valueMax;
 }
 export function checkLength(value, requiredLength) {
-  return value.length === requiredLength;
+  return value != null && value.length === requiredLength;
 }
 export function checkNotEmpty(value) {
-  return value.length > 0;
+  return value != null && value.length > 0;
 }
 export function checkBooleanValue(value) {
-  return value === true;
+  return !!value === true;
 }
